@@ -1,13 +1,12 @@
 package com.example.quiz.model;
 
-import java.util.Date;
-
 public class Worksheet {
     private int id;
     private String fileName;
-    private String filePath;
-    private String uploadedBy;
-    private Date uploadTime;  // ✅ add this
+    private String subject;
+    private String grade;
+    private byte[] fileData;
+    private String uploadedBy; // add this
 
     // Getters and Setters
     public int getId() { return id; }
@@ -16,12 +15,15 @@ public class Worksheet {
     public String getFileName() { return fileName; }
     public void setFileName(String fileName) { this.fileName = fileName; }
 
-    public String getFilePath() { return filePath; }
-    public void setFilePath(String filePath) { this.filePath = filePath; }
+    public String getSubject() { return subject; }
+    public void setSubject(String subject) { this.subject = subject; }
 
-    public String getUploadedBy() { return uploadedBy; }
-    public void setUploadedBy(String uploadedBy) { this.uploadedBy = uploadedBy; }
+    public String getGrade() { return grade; }
+    public void setGrade(String grade) { this.grade = grade; }
 
-    public Date getUploadTime() { return uploadTime; } // ✅ getter
-    public void setUploadTime(Date uploadTime) { this.uploadTime = uploadTime; } // ✅ setter
+    public byte[] getFileData() { return fileData; }
+    public void setFileData(byte[] fileData) { this.fileData = fileData; }
+
+    public String getUploadedBy() { return uploadedBy; } // getter
+    public void setUploadedBy(String uploadedBy) { this.uploadedBy = uploadedBy; } // setter
 }
