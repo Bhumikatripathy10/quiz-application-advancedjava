@@ -124,7 +124,7 @@ select { padding:10px; border-radius:10px; border:1px solid #ccc; font-size:16px
         <h3>Assessment Options</h3>
         <div>
             <button class="action-btn" id="importBtn"><i class="fas fa-file-import"></i> Import Worksheet</button>
-            <button class="action-btn"><i class="fas fa-plus"></i> Create New Assessment</button>
+             <button class="action-btn" id="createNewBtn"><i class="fas fa-plus"></i> Create New Assessment</button>
         </div>
 
         <div class="upload-box" id="uploadBox">
@@ -258,6 +258,13 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(err => { console.error(err); alert('Error uploading worksheet'); });
     });
 
+ // CREATE NEW ASSESSMENT REDIRECT
+    const createNewBtn = document.getElementById('createNewBtn');
+    if (createNewBtn) {
+        createNewBtn.addEventListener('click', () => {
+            window.location.href = '<%=request.getContextPath()%>/createAssessment.jsp';
+        });
+    }
 
 
     // Delete worksheet

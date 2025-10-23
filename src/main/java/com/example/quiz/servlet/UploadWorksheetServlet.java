@@ -9,7 +9,6 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 
 @WebServlet("/uploadWorksheet")
@@ -23,6 +22,11 @@ public class UploadWorksheetServlet extends HttpServlet {
 
         HttpSession session = request.getSession(true);
         User user = (User) session.getAttribute("loggedUser");
+
+        // DEBUG
+        System.out.println("Session user: " + user);
+        System.out.println("Uploader username: " + (user != null ? user.getName() : "null user"));
+
         if (user == null) {
             response.getWriter().write("fail");
             return;
@@ -51,6 +55,7 @@ public class UploadWorksheetServlet extends HttpServlet {
         ws.setSubject(subject);
         ws.setGrade(grade);
         ws.setFileData(fileData);
+        ws.setUploadedBy(user.getName()); // <-- FIXED
 
         WorksheetDao dao = new WorksheetDao(conn);
         boolean saved = dao.saveWorksheet(ws);
